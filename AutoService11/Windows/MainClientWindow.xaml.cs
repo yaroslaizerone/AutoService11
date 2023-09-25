@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoService11.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,16 @@ namespace AutoService11.Windows
         public MainClientWindow()
         {
             InitializeComponent();
+            frame.Navigate(new ClientList());
+        }
+
+        private void frame_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            try
+            {
+                ClientList pg = (ClientList)e.Content;
+            }
+            catch { };
         }
     }
 }

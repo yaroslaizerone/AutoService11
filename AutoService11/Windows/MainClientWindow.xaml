@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="AutoService" Height="450" Width="800" MinHeight="450" MinWidth="800" Icon="/Resourses/Icon/service_logo.png">
     <Grid>
-        
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="24*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33*"></RowDefinition>
+                <RowDefinition Height="36*"></RowDefinition>
+                <RowDefinition Height="334*"/>
+                <RowDefinition Height="31*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Background="#FFFF9B1A" Height="auto" Width="auto" Grid.ColumnSpan="2"/>
+            <Image Margin="5" Source="/Resourses/Icon/service_logo.png"/>
+            <Frame Grid.Row="1" x:Name="frame" Height="auto" Width="auto" LoadCompleted="frame_LoadCompleted" Margin="0,1,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+
+            </Frame>
+        </Grid>
     </Grid>
 </Window>
