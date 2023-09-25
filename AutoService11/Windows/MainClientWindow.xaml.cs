@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AutoService11
+namespace AutoService11.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MainClientWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainClientWindow : Window
     {
-        public MainWindow()
+        public MainClientWindow()
         {
             InitializeComponent();
         }
