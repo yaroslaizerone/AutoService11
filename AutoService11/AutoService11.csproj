@@ -35,8 +35,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.5\lib\net40\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.5\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.5\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.5\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,8 +76,65 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\DateTimeToVisibilityConverter.cs" />
+    <Compile Include="Classes\Helper.cs" />
+    <Compile Include="Classes\ValidatiorExtensions.cs" />
+    <Compile Include="Entity\AutoServiceEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoServiceEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\AutoServiceEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\AutoServiceEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoServiceEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Client.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ClientService.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DocumentByService.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Gender.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Manufacturer.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Product.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ProductPhoto.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ProductSale.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Service.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ServicePhoto.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\sysdiagrams.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Tag.cs">
+      <DependentUpon>AutoServiceEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MainClientWindow.xaml.cs">
       <DependentUpon>MainClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ServiceList.xaml.cs">
+      <DependentUpon>ServiceList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\WorkWithClient.xaml.cs">
       <DependentUpon>WorkWithClient.xaml</DependentUpon>
@@ -65,10 +143,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\AddEditClient.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\ClientList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,15 +155,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\ServiceList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\WorkWithClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\AddEditClient.xaml.cs">
-      <DependentUpon>AddEditClient.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\ClientList.xaml.cs">
       <DependentUpon>ClientList.xaml</DependentUpon>
     </Compile>
@@ -113,6 +188,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Entity\AutoServiceEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AutoServiceEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\AutoServiceEntities.edmx.diagram">
+      <DependentUpon>AutoServiceEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -121,10 +204,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\" />
-    <Folder Include="Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resourses\Клиенты\1.jpg" />
     <Resource Include="Resourses\Клиенты\10.jpg" />
@@ -229,6 +309,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Icon\service_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entity\AutoServiceEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoServiceEntities.edmx</DependentUpon>
+      <LastGenOutput>AutoServiceEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\AutoServiceEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutoServiceEntities.edmx</DependentUpon>
+      <LastGenOutput>AutoServiceEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
